@@ -55,10 +55,6 @@ st.set_page_config(page_title="ATS Resume Expert")
 st.header("ATS Tracking System")
 jd=st.text_area("Job Description: ")
 
-# Validation for text area not being blank
-if not jd.strip():
-    st.warning("Job Description cannot be blank. Please provide a description.")
-    st.stop()
 uploaded_file=st.file_uploader("Upload Your Resume",type=["pdf"],help="Please upload the PDF")
 
 if uploaded_file is not None:
@@ -67,6 +63,11 @@ if uploaded_file is not None:
         st.warning("Please upload a file with 'resume' in its name.")
         st.stop()
     st.write("PDF Uploaded Successfully")
+
+# Validation for text area not being blank
+if not jd.strip():
+    st.warning("Job Description cannot be blank. Please provide a description.")
+    st.stop()
 
 RESUME_KEYWORDS = ['experience', 'education', 'skills', 'summary', 'career objective']
 
