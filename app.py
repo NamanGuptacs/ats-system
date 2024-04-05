@@ -54,16 +54,41 @@ Profile Summary : ""
 st.set_page_config(page_title="ATS Resume Expert")
 st.header("ATS Tracking System")
 jd=st.text_area("Job Description: ")
+
+# Validation for text area not being blank
+if not jd.strip():
+    st.warning("Job Description cannot be blank. Please provide a description.")
+    return
 uploaded_file=st.file_uploader("Upload Your Resume",type=["pdf"],help="Please upload the PDF")
 
 if uploaded_file is not None:
+    # Additional validation: check if the file name contains "resume"
+    if "resume" not in uploaded_file.name.lower():
+        st.warning("Please upload a file with 'resume' in its name.")
+        return
     st.write("PDF Uploaded Successfully")
+
+RESUME_KEYWORDS = ['experience', 'education', 'skills', 'summary', 'career objective']
+
+def is_resume_content(text):
+    """
+    Check if the given text contains keywords typically found in resumes.
+    """
+    text_lower = text.lower()
+    for keyword in RESUME_KEYWORDS:
+        if keyword in text_lower:
+            return True
+    return False
 
 submit = st.button("Submit")
 
 if submit:
     if uploaded_file is not None:
         text=input_pdf_to_text(uploaded_file)
+        # Additional validation: check if the content resembles a resume
+        if not is_resume_content(text):
+            st.warning("The uploaded file does not appear to contain resume content.")
+            return
         response=get_gemini_response(input_prompt)
         st.subheader(response)
     else:
