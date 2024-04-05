@@ -41,8 +41,13 @@ and big data engineer. Your task is to evaluate the resume based on the given jo
 You must consider the job market is very competitive and you should provide best assistance
 for imporving the resume. Assign the percentage Match based on JD  and the missing keywords 
 with high accuracy.
+
 resume:{text}
 description:{jd}
+
+Before matching the resume with description, first validate the given description is actual valid JD or not. 
+If description is correct then match it with text and go ahead with response, 
+if wrong then return the Warning: Please provide a valid Job Description 
 
 I want the response in the single string having the structure as 
 JD Match : %
