@@ -39,15 +39,16 @@ Hey Act like a skilled and very experience ATS(Application Tracking System)
 with the deep understanding of tech field, software engineering, data science, data analyst
 and big data engineer. Your task is to evaluate the resume based on the given job description.
 You must consider the job market is very competitive and you should provide best assistance
-for imporving the resume. Assign the percentage Match based on JD  and the missing keywords 
-with high accuracy.
+for imporving the resume. Assign the percentage Match based on JD  and the missing keywords in the resume
+with 99 percent  accuracy.
 
 resume:{text}
 description:{jd}
 
 I want the response in the single string having the structure as 
 JD Match : %
-MissingKeywords: keywords in bullets
+
+Missing Keywords: keywords in bullets
 
 Profile Summary : "" 
 """
