@@ -45,10 +45,6 @@ with high accuracy.
 resume:{text}
 description:{jd}
 
-Before matching the resume with description, first validate the given description correct. 
-If description is correct then match it with text and go ahead with response else return the 
-Warning: Please provide a valid Job Description.
-
 I want the response in the single string having the structure as 
 JD Match : %
 MissingKeywords: keywords in bullets
